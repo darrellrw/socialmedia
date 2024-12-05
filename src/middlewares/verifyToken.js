@@ -24,9 +24,8 @@ export const verifyAdmin = async (req, res, next) => {
     if (!user[0]) {
         return res.status(404).json({ message: "User not found" });
     }
-    if (req.user.role !== 0) {
-        return res.status(403).json({ message: "Admin resource! Access denied" });
+    if (user[0].role !== 0) {
+        return res.status(403).json({ message: "Admin resource! Access denied"});
     }
-
     next();
 };

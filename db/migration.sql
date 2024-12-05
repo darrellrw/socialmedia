@@ -1,3 +1,4 @@
+-- DATABASE TABLES
 CREATE DATABASE socialmedia;
 USE socialmedia;
 
@@ -57,3 +58,9 @@ CREATE TABLE reports (
     CONSTRAINT fk_post_id_reports FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_user_uuid_reports FOREIGN KEY (user_uuid) REFERENCES users(uuid) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- INSERT
+INSERT INTO users (uuid, name, email, password, gender) VALUES ("c716552d-3aaf-4926-b869-3ea6ea3d067a", "darrell", "darrell@mail.com", "password", 1)
+
+-- UPDATE
+UPDATE users SET name = "darrell", email = "darrell@mail.com", gender = 0, description = "Minecraft" WHERE uuid = "c716552d-3aaf-4926-b869-3ea6ea3d067a"

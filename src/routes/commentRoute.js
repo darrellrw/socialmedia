@@ -1,7 +1,7 @@
 import express from "express";
 
 import { verifyToken, verifyAdmin } from "../middlewares/verifyToken.js";
-import { getComments, getCommentByID, getCommentsByPost, getCommentsByUser, createComment, updateCommentByID } from "../controllers/commentController.js";
+import { getComments, getCommentByID, getCommentsByPost, getCommentsByUser, createComment, updateCommentByID, deleteCommentByID, getCommentsCount } from "../controllers/commentController.js";
 
 const commentRouter = express.Router();
 
@@ -11,5 +11,7 @@ commentRouter.get("/comments/post/:id_post", verifyToken, getCommentsByPost);
 commentRouter.get("/comments/user/:uuid", verifyToken, getCommentsByUser);
 commentRouter.post("/comment", verifyToken, createComment);
 commentRouter.put("/comment/:id", verifyToken, updateCommentByID);
+commentRouter.delete("/comment/:id", verifyToken, deleteCommentByID);
+commentRouter.get("/comments/count", verifyToken, getCommentsCount);
 
 export default commentRouter;

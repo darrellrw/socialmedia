@@ -1,7 +1,7 @@
 import express from "express";
 
 import { verifyToken, verifyAdmin } from "../middlewares/verifyToken.js";
-import { getPosts, getPostByID, getPostsByUser, createPost, updatePostByID, deletePostByID } from "../controllers/postController.js";
+import { getPosts, getPostByID, getPostsByUser, createPost, updatePostByID, deletePostByID, getPostsByTitle, countPostsByUser } from "../controllers/postController.js";
 
 const postRouter = express.Router();
 
@@ -11,5 +11,7 @@ postRouter.get("/posts/user/:uuid", verifyToken, getPostsByUser);
 postRouter.post("/post", verifyToken, createPost);
 postRouter.put("/post/:id", verifyToken, updatePostByID);
 postRouter.delete("/post/:id", verifyToken, deletePostByID);
+postRouter.get("/posts/search", verifyToken, getPostsByTitle);
+postRouter.get("/posts/count/user/:uuid", verifyToken, countPostsByUser);
 
 export default postRouter;
